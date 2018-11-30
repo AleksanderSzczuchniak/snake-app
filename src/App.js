@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react'
+import Snake from './Snake'
 
 const App = (props) => (
   <div>
