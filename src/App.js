@@ -1,9 +1,12 @@
 import React from 'react'
 import Snake from './Snake'
+import { database } from './firebaseConfig'
 
 const App = (props) => (
   <div>
-    <Snake />
+    <Snake
+      firebaseDatabase={database}
+    />
   </div>
 )
 
