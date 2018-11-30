@@ -11,6 +11,7 @@ class Snake extends React.Component {
     this.currentGameBoard = null
     this.direction = 'right'
     this.currentPlayerIndex = 0
+    this.matchId = null
 
     this.state = {
       gameBoard: (
@@ -33,6 +34,18 @@ class Snake extends React.Component {
       meals: [],
       gameTickTime: props.startGameTickTime
     }
+  }
+
+  checkIfIsInTheMatch = () => {
+    if(window.location.hash){
+      this.matchId = window.location.hash
+    }else{
+      this.startNewMatch()
+    }
+  }
+
+  startNewMatch = () => {
+    
   }
 
   componentDidMount() {
@@ -140,6 +153,7 @@ class Snake extends React.Component {
       this.setState({
         meals: newMeals
       })
+      this.placeNewMeal()
     }
   }
 
@@ -179,6 +193,7 @@ class Snake extends React.Component {
 
   endGame = () => {
     alert(`LOST!`)
+    clearInterval(this.intervalId)
   }
 
   onArrowKeyDown = event => {
@@ -231,8 +246,8 @@ class Snake extends React.Component {
 
 Snake.defaultProps = {
   // @TODO it should be checked if bigger than eg. 5
-  boardDimension: 30,
-  startGameTickTime: 100
+  boardDimension: 11,
+  startGameTickTime: 500
 }
 
 export default Snake
